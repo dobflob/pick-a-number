@@ -154,28 +154,4 @@ def start_game():
             time.sleep(2)
             selection = menu()
 
-
-    # Menu to play, view user stats, or quit game
-    # When playing
-    #   if it's not the first play through, show high score
-    #   keep prompting until they guess the number (give feedback, catch exceptions)
-    #   provide message when they win and show how many guesses it took
-    #   prompt to play again
-    #       if yes, repeat when playing loop
-    #       if no, provide thanks for playing message and return to menu
-    # Stats
-    #   if no games have been played, tell user there are no stats for the current session and return to menu
-    #   if scores has at least one value: show high score, average score, worst score, number of games played
-    # Quit
-    #   Show goodbye message
-
-    # TODO: export scores to csv when user quits 
-    #   when program starts, ask user if this is their first time every playing
-    #   if yes, proceed to normal game loop
-    #   if no, prompt for their name and import scores related to that name
-    #   use all scores to show score statistics
-    #   use all scores to show score history
-    #   will need to ask user for their name so can retrieve the correct score history
-    #       if user not found in history, report no play history for the current user
-    
 start_game()
