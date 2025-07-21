@@ -2,6 +2,17 @@ import random
 import time
 
 # Displays welcome message to user and gets their name
+def check_yn_input(selection):
+    if selection == 'n':
+        return False
+    elif selection == 'y':
+        return False
+    else:
+        err = 'invalid selection'
+        err_msg = 'Please enter \'Y\' or \'N\''
+        show_error(err, err_msg)
+        return True
+
 def welcome_user():
     print('''
 _____________________________________________
@@ -11,11 +22,13 @@ _____________________________________________
 _____________________________________________
 ---------------------------------------------
     ''')
-    
-    first_time = input('>> Is this your first time playing? (Y/N)  ')
-    name = input('\n>> Please enter your name:  ')
+    selection_error = True
+    while selection_error:
+        first_time = input('>> Is this your first time playing? (Y/N)  ').lower()
+        selection_error = check_yn_input(first_time)
 
-    if first_time.lower() == 'n':
+    name = input('\n>> Please enter your name:  ')
+    if first_time == 'n':
         print(f'''
 
 *** Welcome back, {name.title()}! ***''')
@@ -72,8 +85,12 @@ def play():
 You found the winning number in {guess_count} tries.
                 ''')
                 scores.append(guess_count)
-                selection = input('\n>> Do you want to play again? (Y/N)  ')
 
+                selection_error = True
+                while selection_error:
+                    selection = input('\n>> Do you want to play again? (Y/N)  ').lower()
+                    selection_error = check_yn_input(selection)
+                
                 if selection == 'n':
                     return sorted(scores)
                 else:
@@ -120,7 +137,7 @@ def show_error(err, err_msg):
           
 xxx ERROR: {err.upper()} xxx
 ---------------------------------------------
-{err_msg.capitalize()}     
+{err_msg}     
     ''')
 
 # Starts the program and controls flow
