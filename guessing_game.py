@@ -82,8 +82,8 @@ You found the winning number in {guess_count} tries.
 # Print out the users stats if they have scores, else print message indicating no stats
 def display_stats(scores,name):
     if scores:
-        high_score = scores[0]
-        lowest_score = scores[len(scores) - 1]
+        high_score = min(scores)
+        lowest_score = max(scores)
         games_played = len(scores)
         average_score = sum(scores)/len(scores)
         print(f'''
@@ -92,7 +92,7 @@ def display_stats(scores,name):
 ---------------------------------------------
     High Score: {high_score}
     Average Score: {average_score}
-    Lowest Score: {lowest_score}
+    Worst Score: {lowest_score}
     Gamed Played: {games_played}
         ''')
     else:
